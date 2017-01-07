@@ -17,12 +17,14 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    [_window setDelegate:self];
 }
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
-
-
+-(void)windowWillClose:(NSNotification *)notification{
+    [NSApp terminate:self];
+}
 @end

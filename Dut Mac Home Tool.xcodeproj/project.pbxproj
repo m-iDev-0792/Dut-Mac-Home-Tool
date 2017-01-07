@@ -11,6 +11,8 @@
 		B7D789601DFB04590090134D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D7895F1DFB04590090134D /* main.m */; };
 		B7D789621DFB04590090134D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7D789611DFB04590090134D /* Assets.xcassets */; };
 		B7D789651DFB04590090134D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D789631DFB04590090134D /* MainMenu.xib */; };
+		B7D7896E1DFB09380090134D /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D7896D1DFB09380090134D /* Controller.m */; };
+		B7E8C4F51E1FF05200EE5CFE /* STPrivilegedTask.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E8C4F41E1FF05200EE5CFE /* STPrivilegedTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,10 @@
 		B7D789611DFB04590090134D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7D789641DFB04590090134D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B7D789661DFB04590090134D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7D7896C1DFB09380090134D /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		B7D7896D1DFB09380090134D /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		B7E8C4F31E1FF05200EE5CFE /* STPrivilegedTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPrivilegedTask.h; sourceTree = "<group>"; };
+		B7E8C4F41E1FF05200EE5CFE /* STPrivilegedTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPrivilegedTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,10 @@
 		B7D7895A1DFB04590090134D /* Dut Mac Home Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B7E8C4F31E1FF05200EE5CFE /* STPrivilegedTask.h */,
+				B7E8C4F41E1FF05200EE5CFE /* STPrivilegedTask.m */,
+				B7D7896C1DFB09380090134D /* Controller.h */,
+				B7D7896D1DFB09380090134D /* Controller.m */,
 				B7D7895B1DFB04590090134D /* AppDelegate.h */,
 				B7D7895C1DFB04590090134D /* AppDelegate.m */,
 				B7D789611DFB04590090134D /* Assets.xcassets */,
@@ -143,6 +153,8 @@
 			files = (
 				B7D789601DFB04590090134D /* main.m in Sources */,
 				B7D7895D1DFB04590090134D /* AppDelegate.m in Sources */,
+				B7E8C4F51E1FF05200EE5CFE /* STPrivilegedTask.m in Sources */,
+				B7D7896E1DFB09380090134D /* Controller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +266,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Dut Mac Home Tool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "Huajige.Inc.Dut-Mac-Home-Tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -266,6 +279,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Dut Mac Home Tool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "Huajige.Inc.Dut-Mac-Home-Tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -290,6 +304,7 @@
 				B7D7896B1DFB04590090134D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

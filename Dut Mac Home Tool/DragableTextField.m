@@ -25,15 +25,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        /***
-         第一步：帮助view注册拖动事件的监听器，可以监听多种数据类型，这里只列出比较常用的：
-         NSStringPboardType         字符串类型
-         NSFilenamesPboardType      文件
-         NSURLPboardType            url链接
-         NSPDFPboardType            pdf文件
-         NSHTMLPboardType           html文件
-         ***/
-        //这里我们只添加对文件进行监听，如果拖动其他数据类型到view中是不会被接受的
+
+        //只添加对文件进行监听
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
     }
     

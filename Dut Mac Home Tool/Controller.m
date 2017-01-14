@@ -34,6 +34,7 @@
     //NSLog(@"the result of cmd %@ is %@",cmd,result);
     return result;
 }
+//需要root权限的cmd
 -(NSString*)execPrivilegedCmd:(NSString*)cmd{
     STPrivilegedTask* task=[[STPrivilegedTask alloc]init];
     [task setLaunchPath:@"/bin/bash"];
@@ -54,6 +55,7 @@
     NSString *outputString = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
     return outputString;
 }
+//特殊符号处理
 -(NSString*)dealSpecChar:(NSString*)cmd{
     NSMutableString* temp=[NSMutableString stringWithString:cmd];
     [temp replaceOccurrencesOfString:@"#" withString:@"\\#" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
@@ -328,6 +330,7 @@
         [self execCmd:@"defaults write com.apple.dock mineffect -string genie;killall Dock"];
     }
 }
+#pragma mark - mac地址修改
 -(IBAction)changeMacAdd:(id)sender{
     NSString* type=[enType titleOfSelectedItem];
     if(macAddText4.stringValue.length!=2||macAddText3.stringValue.length!=2||macAddText2.stringValue.length!=2||macAddText1.stringValue.length!=2||macAddText5.stringValue.length!=2||macAddText6.stringValue.length!=2){

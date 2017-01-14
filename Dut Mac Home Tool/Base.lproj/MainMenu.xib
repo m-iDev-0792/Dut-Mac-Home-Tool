@@ -113,24 +113,21 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="显示/隐藏文件" identifier="" id="Jpg-ZE-K5Q">
-                                <view key="view" ambiguous="YES" id="zfK-Aa-JbT">
+                                <view key="view" id="zfK-Aa-JbT">
                                     <rect key="frame" x="10" y="33" width="512" height="162"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c22-ie-ZdD" customClass="DragableTextField">
-                                            <rect key="frame" x="122" y="117" width="293" height="22"/>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c22-ie-ZdD">
+                                            <rect key="frame" x="145" y="117" width="270" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="cwB-3H-zqn">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
-                                            <connections>
-                                                <outlet property="MyDelegate" destination="96e-G7-W9W" id="pFa-qM-bDf"/>
-                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cAV-4O-qF9">
-                                            <rect key="frame" x="85" y="120" width="43" height="17"/>
+                                            <rect key="frame" x="112" y="120" width="43" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="文件：" id="fOj-1z-hZm">
                                                 <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -161,7 +158,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="awx-rE-N5O">
-                                            <rect key="frame" x="161" y="67" width="191" height="18"/>
+                                            <rect key="frame" x="161" y="74" width="191" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="显示所有隐藏的文件夹和文件" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cfs-7G-bzr">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -172,7 +169,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pmq-6V-U8w">
-                                            <rect key="frame" x="143" y="10" width="266" height="51"/>
+                                            <rect key="frame" x="143" y="17" width="266" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="thd-6D-WY5">
                                                 <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -184,7 +181,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIw-vc-EPU">
-                                            <rect key="frame" x="9" y="115" width="76" height="26"/>
+                                            <rect key="frame" x="40" y="115" width="76" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="隐藏" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wqc-9O-ukl" id="IaC-Lv-D4c">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -198,19 +195,7 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
-                                            <connections>
-                                                <action selector="showHideClick:" target="96e-G7-W9W" id="5wM-ru-tWQ"/>
-                                            </connections>
                                         </popUpButton>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiX-qT-ZCr">
-                                            <rect key="frame" x="104" y="95" width="329" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="将要隐藏的文件拖拽入路径文本框中或者选择路径↑↑↑" id="oQb-UZ-jjY">
-                                                <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -610,7 +595,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="macOS系统盘制作" identifier="" id="fhS-6p-u49">
-                                <view key="view" id="hUM-Gz-bFP">
+                                <view key="view" ambiguous="YES" id="hUM-Gz-bFP">
                                     <rect key="frame" x="10" y="33" width="512" height="162"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -710,7 +695,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Cjp-AD-tNW">
-                                                <rect key="frame" x="1" y="1" width="15" height="0.0"/>
+                                                <rect key="frame" x="462" y="1" width="15" height="58"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -803,7 +788,6 @@
                 <outlet property="setScrSaverButton" destination="4IR-u4-8aS" id="WPr-H2-GJe"/>
                 <outlet property="showAllFileCheck" destination="awx-rE-N5O" id="T1Z-H3-hSl"/>
                 <outlet property="showHideButton" destination="XhM-8s-8f3" id="6TN-dS-YTk"/>
-                <outlet property="showHideNoteText" destination="uiX-qT-ZCr" id="xqC-n3-YwH"/>
                 <outlet property="showHidePathText" destination="c22-ie-ZdD" id="06F-7o-ifm"/>
                 <outlet property="showHidePop" destination="KIw-vc-EPU" id="QKX-F0-ee6"/>
                 <outlet property="suckEffectCheck" destination="CLb-qy-cKN" id="BIY-zF-byr"/>

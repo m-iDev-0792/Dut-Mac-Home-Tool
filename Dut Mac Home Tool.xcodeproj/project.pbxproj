@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B7B56ECB1E2A469B00CFB7EB /* DragableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B56ECA1E2A469B00CFB7EB /* DragableTextField.m */; };
 		B7D7895D1DFB04590090134D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D7895C1DFB04590090134D /* AppDelegate.m */; };
 		B7D789601DFB04590090134D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D7895F1DFB04590090134D /* main.m */; };
 		B7D789621DFB04590090134D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7D789611DFB04590090134D /* Assets.xcassets */; };
@@ -17,8 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B7B56EC91E2A469B00CFB7EB /* DragableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragableTextField.h; sourceTree = "<group>"; };
-		B7B56ECA1E2A469B00CFB7EB /* DragableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragableTextField.m; sourceTree = "<group>"; };
 		B7D789581DFB04590090134D /* Dut Mac Home Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dut Mac Home Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D7895B1DFB04590090134D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B7D7895C1DFB04590090134D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,8 +63,6 @@
 				B7E8C4F41E1FF05200EE5CFE /* STPrivilegedTask.m */,
 				B7D7896C1DFB09380090134D /* Controller.h */,
 				B7D7896D1DFB09380090134D /* Controller.m */,
-				B7B56EC91E2A469B00CFB7EB /* DragableTextField.h */,
-				B7B56ECA1E2A469B00CFB7EB /* DragableTextField.m */,
 				B7D7895B1DFB04590090134D /* AppDelegate.h */,
 				B7D7895C1DFB04590090134D /* AppDelegate.m */,
 				B7D789611DFB04590090134D /* Assets.xcassets */,
@@ -157,7 +152,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D789601DFB04590090134D /* main.m in Sources */,
-				B7B56ECB1E2A469B00CFB7EB /* DragableTextField.m in Sources */,
 				B7D7895D1DFB04590090134D /* AppDelegate.m in Sources */,
 				B7E8C4F51E1FF05200EE5CFE /* STPrivilegedTask.m in Sources */,
 				B7D7896E1DFB09380090134D /* Controller.m in Sources */,

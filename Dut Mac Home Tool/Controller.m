@@ -9,6 +9,7 @@
 #import "Controller.h"
 #import "STPrivilegedTask.h"
 @implementation Controller
+#pragma mark - 基础功能&初始化
 -(NSString*)execCmd:(NSString*)cmd{
     // 初始化并设置shell路径
     NSTask *task = [[NSTask alloc] init];
@@ -53,6 +54,28 @@
     NSString *outputString = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding];
     return outputString;
 }
+-(NSString*)dealSpecChar:(NSString*)cmd{
+    NSMutableString* temp=[NSMutableString stringWithString:cmd];
+    [temp replaceOccurrencesOfString:@"#" withString:@"\\#" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"%" withString:@"\\%" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"&" withString:@"\\&" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"$" withString:@"\\$" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"," withString:@"\\," options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"=" withString:@"\\=" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"*" withString:@"\\*" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@" " withString:@"\\ " options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"|" withString:@"\\|" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"~" withString:@"\\~" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"{" withString:@"\\{" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"<" withString:@"\\<" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"}" withString:@"\\}" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@">" withString:@"\\>" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@"'" withString:@"\\'" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    [temp replaceOccurrencesOfString:@";" withString:@"\\;" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
+    return temp;
+}
+
 -(void)setCheckBoxState{
     NSString* showAllFileState=[self execCmd:@"defaults read com.apple.finder AppleShowAllFiles"];
     NSString* transIconState=[self execCmd:@"defaults read com.apple.Dock showhidden"];
@@ -117,6 +140,7 @@
     [cpuTypeLabel setStringValue:[NSString stringWithFormat:@"处理器型号：%@",cpuType]];
     [osTypeLabel setStringValue:[NSString
                                  stringWithFormat:@"MacOS X版本号：%@",osType]];
+    [showHidePathText registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];
     //方便输入mac地址
     [macAddText1 setDelegate:self];
     [macAddText2 setDelegate:self];
@@ -124,6 +148,25 @@
     [macAddText4 setDelegate:self];
     [macAddText5 setDelegate:self];
     [macAddText6 setDelegate:self];
+}
+#pragma mark
+//处理显示隐藏文件拖拽
+-(void) doGetDragDropArrayFiles:(NSArray*) fileLists{
+    [pathArray addObjectsFromArray:fileLists];
+    NSMutableString* tempText=[[NSMutableString alloc]init];
+    for (NSString *fileName in pathArray) {
+        [tempText appendFormat:@" %@",fileName.lastPathComponent];
+    }
+    [showHidePathText setStringValue:tempText];
+}
+-(IBAction)showHideClick:(id)sender{
+    [pathArray removeAllObjects];
+    [showHidePathText setStringValue:@""];
+    if([[showHidePop titleOfSelectedItem]isEqualToString:@"隐藏"]){
+        [showHideNoteText setStringValue:@"将要隐藏的文件拖拽入路径文本框中或者选择路径↑↑↑"];
+    }else{
+        [showHideNoteText setStringValue:@"将要显示的文件拖拽入路径文本框中↑↑↑"];
+    }
 }
 -(IBAction)selectPath:(id)sender{
     [pathArray removeAllObjects];
@@ -176,11 +219,11 @@
     }
     if([[showHidePop titleOfSelectedItem]isEqualToString:@"隐藏"]){
         for(int i=0;i<[pathArray count];++i){
-            [self execCmd:[NSString stringWithFormat:@"chflags hidden %@",[pathArray objectAtIndex:i]]];
+            [self execCmd:[NSString stringWithFormat:@"chflags hidden %@",[self dealSpecChar:[pathArray objectAtIndex:i]]]];
         }
     }else{
         for(int i=0;i<[pathArray count];++i){
-            [self execCmd:[NSString stringWithFormat:@"chflags nohidden %@",[pathArray objectAtIndex:i]]];
+            [self execCmd:[NSString stringWithFormat:@"chflags nohidden %@",[self dealSpecChar:[pathArray objectAtIndex:i]]]];
         }
     }
 }
@@ -275,7 +318,7 @@
         return;
     }
     for(int i=0;i<[pkgPathArray count];++i){
-        [self execCmd:[NSString stringWithFormat:@"pkgutil --expand %@ ~/Desktop/",[pkgPathArray objectAtIndex:i]]];
+        [self execCmd:[NSString stringWithFormat:@"pkgutil --expand %@ ~/Desktop/",[self dealSpecChar:[pkgPathArray objectAtIndex:i]]]];
     }
 }
 -(IBAction)suckEffectChecked:(id)sender{
@@ -323,6 +366,7 @@
         else if([obj.object isEqual:macAddText5])[macAddText6 becomeFirstResponder];
     }
 }
+#pragma mark - macOS启动盘制作
 -(IBAction)OSSelectPath:(id)sender{
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];
@@ -332,7 +376,7 @@
     {
         NSArray* files = [openDlg URLs];
         NSURL* fileName = [files objectAtIndex:0];
-        OSPath=[fileName.path stringByReplacingOccurrencesOfString:@" " withString:@"\\ "];
+        OSPath=[self dealSpecChar:fileName.path];
         NSLog(@"%@",OSPath);
         [OSPathText setStringValue:fileName.path];
     }
@@ -346,7 +390,7 @@
     {
         NSArray* files = [openDlg URLs];
         NSURL* fileName = [files objectAtIndex:0];
-        Volume=[fileName.path stringByReplacingOccurrencesOfString:@" " withString:@"\\ "];
+        Volume=[self dealSpecChar:fileName.path];
         NSLog(@"%@",Volume);
         [drivePathText setStringValue:fileName.path];
     }

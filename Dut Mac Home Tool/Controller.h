@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
-@interface Controller : NSObject<NSTextFieldDelegate>{
+#import "DragableTextField.h"
+@interface Controller : NSObject<NSTextFieldDelegate,DragableTextFieldDelegate>{
     IBOutlet NSTextField* cpuTypeLabel;
     IBOutlet NSTextField* osTypeLabel;
     //check box buttons
@@ -34,6 +35,7 @@
     
     //textfields
     IBOutlet NSTextField* showHidePathText;
+    IBOutlet NSTextField* showHideNoteText;
     IBOutlet NSTextField* unsleepTimeText;
     IBOutlet NSTextField* unpackPathText;
     IBOutlet NSTextField* macAddText1;
@@ -58,6 +60,7 @@
 -(IBAction)pkgSelectPath:(id)sender;
 -(IBAction)showHideFile:(id)sender;
 -(IBAction)showHideChecked:(id)sender;
+-(IBAction)showHideClick:(id)sender;
 -(IBAction)transIconChecked:(id)sender;
 -(IBAction)disableSmoothChecked:(id)sender;
 -(IBAction)disableBounceChecked:(id)sender;

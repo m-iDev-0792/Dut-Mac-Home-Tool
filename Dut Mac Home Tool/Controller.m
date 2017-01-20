@@ -84,7 +84,7 @@
     NSString* disableSmoothState=[self execCmd:@"defaults read -g NSScrollAnimationEnabled"];
     NSString* disableBounceState=[self execCmd:@"defaults read -g NSScrollViewRubberbanding"];
     NSString* disableAnimationState=[self execCmd:@"defaults read NSGlobalDomain NSAutomaticWindowAnimationsEnabled"];
-    NSString* safariNewTabState=[self execCmd:@"defaults read com.apple.Safari TargetedClickCreate Tabs"];
+    NSString* safariNewTabState=[self execCmd:@"defaults read com.apple.Safari TargetedClicksCreateTabs"];
     NSString* finderShowPathState=[self execCmd:@"defaults read com.apple.finder _FXShowPosixPathInTitle"];
     NSString* suckEffectState=[self execCmd:@"defaults read com.apple.dock mineffect"];
     //设置各个checkbox的状态，注意：优先判断的条件是功能开启后的状态
@@ -298,9 +298,9 @@
 }
 -(IBAction)safariNewTab:(id)sender{
     if(safariNewTabCheck.state==1){
-        [self execCmd:@"defaults write com.apple.Safari TargetedClickCreate Tabs -bool true"];
+        [self execCmd:@"defaults write com.apple.Safari TargetedClicksCreateTabs -bool true"];
     }else{
-        [self execCmd:@"defaults write com.apple.Safari TargetedClickCreate Tabs -bool false"];
+        [self execCmd:@"defaults write com.apple.Safari TargetedClicksCreateTabs -bool false"];
     }
 }
 -(IBAction)finderShowPath:(id)sender{
